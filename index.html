@@ -16,31 +16,79 @@
     </head>
     <body>
         <main>
-            <div class="container">
-                <div class="container-head">
-                    <h1>Лендинги</h1>
-                </div>
-                <div class="container-body">
-                    <div class="add-landing">
-                        <input
-                            type="text"
-                            id="newLandingName"
-                            placeholder="Название лендинга"
-                        />
-                        <button onclick="addLanding()">Добавить лендинг</button>
+            <div class="panel">
+                <nav>
+                    <button class="active" id="tableButton" onclick="showLandingList()">Лендинги</button>
+                    <button id="createButton" onclick="showCreateLanding()">
+                        Создать лендинг
+                    </button>
+                </nav>
+                <div class="container" id="landingPage" style="display: block">
+                    <div class="container-head">
+                        <h1>Лендинги</h1>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Название</th>
-                                <th>Действия</th>
-                            </tr>
-                        </thead>
-                        <tbody id="landingTable">
-                            <!-- Список лендингов будет загружен сюда -->
-                        </tbody>
-                    </table>
+                    <div class="container-body">
+                        <!-- <div class="add-landing">
+                            <input
+                                type="text"
+                                id="newLandingName"
+                                placeholder="Название лендинга"
+                            />
+                            <button onclick="addLanding()">
+                                Добавить лендинг
+                            </button>
+                        </div> -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="landingTable">
+                                <!-- Список лендингов будет загружен сюда -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Сторінка створення нового лендинга -->
+                <div class="container" id="createPage" style="display: none">
+                    <div class="container-head">
+                        <h1>Создать лендинг</h1>
+                    </div>
+                    <div class="container-body create-landing">
+                        <div class="input-container">
+                            <label>Название лендинга:</label>
+                            <input
+                                type="text"
+                                id="landingNameInput"
+                                placeholder="Введите название"
+                            />
+                        </div>
+                        <div class="input-container">
+                            <label>Header:</label>
+                            <textarea
+                                id="landingHeaderInput"
+                                rows="3"
+                                placeholder="Введите заголовок"
+                            ></textarea>
+                        </div>
+
+                        <h3>CPL офферы</h3>
+                        <div id="cplOffers" class="offer-grid"></div>
+
+                        <h3>CPS офферы</h3>
+                        <div id="cpsOffers" class="offer-grid"></div>
+
+                        <h3>Выбранные офферы</h3>
+                        <ul id="selectedOffers" class="offer-list"></ul>
+
+                        <button class="save-landing" onclick="saveNewLanding()">
+                            Сохранить лендинг
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -61,8 +109,12 @@
                         ondragover="event.preventDefault()"
                     ></ul>
 
-                    <button class="save-modal" onclick="saveOffers()">Сохранить</button>
-                    <button class="close-modal" onclick="closeModal()">Закрыть</button>
+                    <button class="save-modal" onclick="saveOffers()">
+                        Сохранить
+                    </button>
+                    <button class="close-modal" onclick="closeModal()">
+                        Закрыть
+                    </button>
                 </div>
             </div>
         </main>
