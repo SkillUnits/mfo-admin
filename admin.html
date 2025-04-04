@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin panel</title>
+        <link rel="stylesheet" href="css/admin.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="js/adminPanel.js"></script>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="container-head">
+                    <h1>Лендинги</h1>
+                </div>
+                <div class="container-body">
+                    <div class="add-landing">
+                        <input
+                            type="text"
+                            id="newLandingName"
+                            placeholder="Название лендинга"
+                        />
+                        <button onclick="addLanding()">Добавить лендинг</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Название</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="landingTable">
+                            <!-- Список лендингов будет загружен сюда -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Модальное окно -->
+            <div class="modal" id="offerModal">
+                <div class="modal-content">
+                    <h2>
+                        Редактировать офферы для: <span id="landingName"></span>
+                    </h2>
+
+                    <h3>Доступные офферы:</h3>
+                    <div id="availableOffers" class="offer-grid"></div>
+
+                    <h3>Выбранные офферы:</h3>
+                    <ul
+                        id="offerList"
+                        class="offer-list"
+                        ondragover="event.preventDefault()"
+                    ></ul>
+
+                    <button class="save-modal" onclick="saveOffers()">Сохранить</button>
+                    <button class="close-modal" onclick="closeModal()">Закрыть</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
